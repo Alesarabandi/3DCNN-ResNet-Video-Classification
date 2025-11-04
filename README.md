@@ -28,6 +28,12 @@ The project was executed in a sequential, iterative manner, documented across se
 | `2.frames_extraction` | **RGB Frame Extraction** | Script for preprocessing the raw videos by extracting sequential RGB frames, which serve as the input for the spatial stream. |
 | `6.flow_extraction` | **Optical Flow Extraction** | Implementation of an algorithm (e.g., Farneback or TV-L1) to compute **dense Optical Flow** fields, which explicitly capture pixel-level motion for the temporal stream. |
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/d0ae6b66-ac8e-4e41-aceb-4cdfeb09d090" width="469" height="499" alt="Screenshot 2025-11-04 at 23 52 15" title="Optical Flow" />
+  <p><em>Optical Flow</em></p>
+</div>
+
+
 ### **Phase 2: Single-Stream Model Development**
 
 This phase involved building and testing single-stream architectures to understand their independent performance.
@@ -38,16 +44,50 @@ This phase involved building and testing single-stream architectures to understa
 | `3.3DCNN_v1.0` | **Initial 3D CNN** | A foundational 3D Convolutional Network model designed to learn spatiotemporal features directly from video clips (stacked frames). |
 | `4.3DCNN-v2.0` | **Refined 3D CNN** | An optimized, smaller architecture with enhanced use of **Dropout** and refined hyperparameters. This version was significantly **more efficient and achieved superior accuracy** compared to `v1.0`, highlighting the importance of smart architecture design over parameter count. |
 
+<div align="center">
+
+  <figure style="display: inline-block; margin: 0 20px;">
+    <img src="https://github.com/user-attachments/assets/89c3265e-a8ec-4fea-a288-e6b1b8604376" width="432" height="305" alt="Screenshot 2025-11-04 at 23 45 09" title="3CNN V1.0" />
+    <figcaption><strong>V1.0</strong></figcaption>
+  </figure>
+
+  <figure style="display: inline-block; margin: 0 20px;">
+    <img src="https://github.com/user-attachments/assets/3bac98d9-a7c3-40a8-a6c2-5bfd50ed2149" width="432" height="305" alt="Screenshot 2025-11-04 at 23 45 23" title="3CNN V2.0" />
+    <figcaption><strong>V2.0</strong></figcaption>
+  </figure>
+
+</div>
+
+
 #### **2. Pure Spatial Model (2D CNN for Spatial Stream)**
 | File | Model | Key Features & Outcome |
 | :--- | :--- | :--- |
 | `5.ResNet50_finetuned` | **Fine-tuned ResNet-50** | Utilized a powerful pre-trained **ResNet-50** model, fine-tuned on the single RGB frames, to serve as the **Spatial Stream** in the final Two-Stream architecture. |
+
+<div align="center">
+  <figure>
+    <img src="https://github.com/user-attachments/assets/04eb3c84-5f67-4769-98db-8a8df43d0925" width="456" height="322" alt="Screenshot 2025-11-04 at 23 51 34" title="Your Title Here" />
+    <figcaption><strong>Fine-tuned ResNet50</strong></figcaption>
+  </figure>
+</div>
+
+<div align="center">
+  <figure>
+    <img src="https://github.com/user-attachments/assets/9134245f-f364-4ba2-bf00-6dd40136164a" width="898" height="321" alt="Screenshot 2025-11-04 at 23 58 44" title="Wide Image Title" />
+    <figcaption><strong></strong></figcaption>
+  </figure>
+</div>
+
 
 ### **Phase 3: Final Architecture & Fusion**
 
 | File | Model | Key Features & Outcome |
 | :--- | :--- | :--- |
 | `7.TwoStreams` | **Two-Stream Network** | The final architecture combining the Spatial (ResNet-50 on RGB) and Temporal (3D CNN on Optical Flow) streams using **Late Fusion**. This allows the model to leverage both appearance and explicit motion signals for classification. |
+
+<img width="456" height="190" alt="Screenshot 2025-11-05 at 00 01 07" src="https://github.com/user-attachments/assets/5c117823-3989-4bdf-87a6-103073f62021" />
+
+<img width="437" height="308" alt="Screenshot 2025-11-05 at 00 01 15" src="https://github.com/user-attachments/assets/a2fe010a-32ef-4522-9321-b6e9dc575d76" />
 
 ---
 
